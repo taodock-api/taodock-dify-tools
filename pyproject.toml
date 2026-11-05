@@ -1,0 +1,14 @@
+[project]
+name = "taodock-dify-tools"
+version = "0.2.0"
+description = "TaoDock image and video tools for Dify"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "dify-plugin==0.10.2",
+]
+
+[dependency-groups]
+dev = []
+
+[tool.uv]
+package = false

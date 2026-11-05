@@ -1,0 +1,49 @@
+identity:
+  name: generate_video
+  author: taodock-api
+  label:
+    en_US: Generate Video
+    zh_Hans: 生成视频
+description:
+  human:
+    en_US: Create a video task with a TaoDock video model.
+    zh_Hans: 使用 TaoDock 视频模型创建视频任务。
+  llm: Creates a TaoDock video task and returns the file or current task state.
+parameters:
+  - name: model
+    type: string
+    required: true
+    form: form
+    label:
+      en_US: Model ID
+      zh_Hans: 模型 ID
+    human_description:
+      en_US: Exact video model ID returned by List Models.
+      zh_Hans: “列出模型”返回的准确视频模型 ID。
+  - name: request
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Request (JSON)
+      zh_Hans: 请求（JSON）
+    human_description:
+      en_US: Model-specific video fields. The model field is set automatically.
+      zh_Hans: 模型专属视频参数；model 字段会自动设置。
+    llm_description: JSON object containing the prompt and settings supported by the selected video model.
+  - name: wait_seconds
+    type: number
+    required: false
+    default: 300
+    min: 0
+    max: 540
+    form: form
+    label:
+      en_US: Wait time
+      zh_Hans: 等待时间
+    human_description:
+      en_US: Seconds to wait before returning an unfinished task state.
+      zh_Hans: 返回未完成任务状态前等待的秒数。
+extra:
+  python:
+    source: tools/generate_video.py

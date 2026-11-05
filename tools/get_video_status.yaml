@@ -1,0 +1,26 @@
+identity:
+  name: get_video_status
+  author: taodock-api
+  label:
+    en_US: Get Video Status
+    zh_Hans: 查询视频状态
+description:
+  human:
+    en_US: Read the current state of a TaoDock video task.
+    zh_Hans: 查询 TaoDock 视频任务的当前状态。
+  llm: Returns the status and progress of a TaoDock video task.
+parameters:
+  - name: task_id
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Task ID
+      zh_Hans: 任务 ID
+    human_description:
+      en_US: Video task ID returned by Generate Video.
+      zh_Hans: “生成视频”返回的视频任务 ID。
+    llm_description: Existing TaoDock video task ID.
+extra:
+  python:
+    source: tools/get_video_status.py

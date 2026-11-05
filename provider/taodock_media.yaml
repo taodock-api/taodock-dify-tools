@@ -1,0 +1,36 @@
+identity:
+  author: taodock-api
+  name: taodock_media
+  label:
+    en_US: TaoDock Media
+    zh_Hans: TaoDock 媒体工具
+  description:
+    en_US: Generate images and videos with TaoDock.
+    zh_Hans: 使用 TaoDock 生成图像和视频。
+  icon: icon.png
+  tags:
+    - image
+    - videos
+credentials_for_provider:
+  api_key:
+    type: secret-input
+    required: true
+    label:
+      en_US: TaoDock API Key
+      zh_Hans: TaoDock API 密钥
+    placeholder:
+      en_US: Enter a TaoDock API key.
+      zh_Hans: 输入 TaoDock API 密钥。
+    help:
+      en_US: Create or manage keys in the TaoDock console.
+      zh_Hans: 在 TaoDock 控制台创建或管理密钥。
+    url: https://taodock.com/keys
+tools:
+  - tools/list_models.yaml
+  - tools/generate_image.yaml
+  - tools/generate_video.yaml
+  - tools/get_video_status.yaml
+  - tools/download_video.yaml
+extra:
+  python:
+    source: provider/taodock_media.py

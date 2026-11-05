@@ -1,0 +1,26 @@
+identity:
+  name: download_video
+  author: taodock-api
+  label:
+    en_US: Download Video
+    zh_Hans: 下载视频
+description:
+  human:
+    en_US: Download a completed TaoDock video task.
+    zh_Hans: 下载已完成的 TaoDock 视频任务。
+  llm: Returns the video file when the task is complete, otherwise returns its current state.
+parameters:
+  - name: task_id
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Task ID
+      zh_Hans: 任务 ID
+    human_description:
+      en_US: Video task ID returned by Generate Video.
+      zh_Hans: “生成视频”返回的视频任务 ID。
+    llm_description: Existing TaoDock video task ID.
+extra:
+  python:
+    source: tools/download_video.py

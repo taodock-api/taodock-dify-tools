@@ -1,0 +1,43 @@
+identity:
+  name: list_models
+  author: taodock-api
+  label:
+    en_US: List Models
+    zh_Hans: 列出模型
+description:
+  human:
+    en_US: List models authorized for the TaoDock API key.
+    zh_Hans: 列出 TaoDock API 密钥已获授权的模型。
+  llm: Returns TaoDock model IDs available to the configured key.
+parameters:
+  - name: kind
+    type: select
+    required: false
+    default: media
+    form: form
+    label:
+      en_US: Model type
+      zh_Hans: 模型类型
+    human_description:
+      en_US: Filter the returned model list.
+      zh_Hans: 筛选返回的模型列表。
+    options:
+      - value: media
+        label:
+          en_US: Image and video
+          zh_Hans: 图像和视频
+      - value: image
+        label:
+          en_US: Image
+          zh_Hans: 图像
+      - value: video
+        label:
+          en_US: Video
+          zh_Hans: 视频
+      - value: text
+        label:
+          en_US: Text
+          zh_Hans: 文本
+extra:
+  python:
+    source: tools/list_models.py

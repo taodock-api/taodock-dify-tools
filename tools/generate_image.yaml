@@ -1,0 +1,57 @@
+identity:
+  name: generate_image
+  author: taodock-api
+  label:
+    en_US: Generate Image
+    zh_Hans: 生成图像
+description:
+  human:
+    en_US: Generate an image with a TaoDock image model.
+    zh_Hans: 使用 TaoDock 图像模型生成图像。
+  llm: Generates an image with TaoDock and returns the image file.
+parameters:
+  - name: model
+    type: string
+    required: true
+    form: form
+    label:
+      en_US: Model ID
+      zh_Hans: 模型 ID
+    human_description:
+      en_US: Exact image model ID returned by List Models.
+      zh_Hans: “列出模型”返回的准确图像模型 ID。
+  - name: prompt
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Prompt
+      zh_Hans: 提示词
+    human_description:
+      en_US: Describe the image to create.
+      zh_Hans: 描述需要生成的图像。
+    llm_description: Detailed image generation instruction.
+  - name: settings
+    type: string
+    required: false
+    form: form
+    label:
+      en_US: Settings (JSON)
+      zh_Hans: 设置（JSON）
+    human_description:
+      en_US: Optional model-specific settings such as size or quality.
+      zh_Hans: 可选的模型专属设置，例如尺寸或质量。
+  - name: edit
+    type: boolean
+    required: false
+    default: false
+    form: form
+    label:
+      en_US: Edit mode
+      zh_Hans: 编辑模式
+    human_description:
+      en_US: Use the image edits endpoint when supported by the selected model.
+      zh_Hans: 在所选模型支持时使用图像编辑接口。
+extra:
+  python:
+    source: tools/generate_image.py
