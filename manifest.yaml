@@ -18,6 +18,9 @@ resource:
 network:
   domains:
     - taodock.com
+tags:
+  - image
+  - videos
 plugins:
   tools:
     - provider/taodock_media.yaml
