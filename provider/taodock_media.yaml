@@ -2,11 +2,11 @@ identity:
   author: taodock-api
   name: taodock_media
   label:
-    en_US: TaoDock Media
-    zh_Hans: TaoDock 媒体工具
+    en_US: TaoDock AI Image & Video
+    zh_Hans: TaoDock AI 图片与视频
   description:
-    en_US: Generate images and videos with TaoDock.
-    zh_Hans: 使用 TaoDock 生成图像和视频。
+    en_US: Discover authorized AI models and generate images or videos with TaoDock.
+    zh_Hans: 通过 TaoDock 发现已授权 AI 模型并生成图片或视频。
   icon: icon.png
   tags:
     - image
