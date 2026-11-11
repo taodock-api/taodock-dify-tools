@@ -9,6 +9,7 @@
 </p>
 
 <p align="center">
+  <a href="https://marketplace.dify.ai/plugin/taodock-api/taodock_media"><img src="https://img.shields.io/badge/Dify_Marketplace-Install-1C64F2" alt="Install from Dify Marketplace"></a>
   <a href="https://github.com/taodock-api/taodock-dify-tools/actions/workflows/validate.yml"><img src="https://github.com/taodock-api/taodock-dify-tools/actions/workflows/validate.yml/badge.svg" alt="Validate"></a>
   <img src="https://img.shields.io/badge/Dify-%3E%3D%201.5.1-1C64F2" alt="Dify 1.5.1+">
   <img src="https://img.shields.io/badge/Python-3.12-3776AB" alt="Python 3.12">
@@ -30,7 +31,7 @@
 
 ### Dify Marketplace
 
-After the plugin is approved, install **TaoDock AI Image & Video** from the Dify Marketplace.
+Install **[TaoDock AI Image & Video](https://marketplace.dify.ai/plugin/taodock-api/taodock_media)** directly from the Dify Marketplace, then add the **TaoDock Media** provider and save your API key.
 
 ### Install a local package
 
@@ -156,6 +157,7 @@ Before submitting, validate the resulting `.difypkg`, confirm it contains no cre
 
 ## Links
 
+- [Install from Dify Marketplace](https://marketplace.dify.ai/plugin/taodock-api/taodock_media)
 - [TaoDock](https://taodock.com/)
 - [Documentation](https://docs.taodock.com/)
 - [Model catalog](https://taodock.com/models)

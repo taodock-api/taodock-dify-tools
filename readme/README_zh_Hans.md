@@ -17,7 +17,7 @@ TaoDock Media 为 Dify 工作流与 Agent 提供模型发现、图片生成、�
 
 ### Dify Marketplace
 
-插件通过审核后，可在 Dify Marketplace 搜索 **TaoDock AI Image & Video** 安装。
+直接从 Dify Marketplace 安装 **[TaoDock AI Image & Video](https://marketplace.dify.ai/plugin/taodock-api/taodock_media)**，然后添加 **TaoDock Media** Provider 并保存 API 密钥。
 
 ### 本地安装包
 
@@ -103,6 +103,7 @@ TaoDock Media 为 Dify 工作流与 Agent 提供模型发现、图片生成、�
 
 ## 项目链接
 
+- Dify Marketplace：https://marketplace.dify.ai/plugin/taodock-api/taodock_media
 - 仓库：https://github.com/taodock-api/taodock-dify-tools
 - 支持：https://github.com/taodock-api/taodock-dify-tools/issues
 - 文档：https://docs.taodock.com/
