@@ -3,11 +3,11 @@ type: plugin
 author: taodock-api
 name: taodock_media
 label:
-  en_US: TaoDock Media
-  zh_Hans: TaoDock 媒体工具
+  en_US: TaoDock AI Image & Video
+  zh_Hans: TaoDock AI 图片与视频
 description:
-  en_US: Create images and videos in Dify with a TaoDock API key.
-  zh_Hans: 在 Dify 中使用 TaoDock API 密钥生成图像和视频。
+  en_US: Discover authorized AI models and generate images or videos in Dify with one TaoDock API key.
+  zh_Hans: 使用一个 TaoDock API 密钥在 Dify 中发现可用 AI 模型并生成图片或视频。
 icon: icon.png
 created_at: "2026-11-05T10:00:00Z"
 resource:
