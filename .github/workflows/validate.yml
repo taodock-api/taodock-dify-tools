@@ -12,9 +12,69 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: astral-sh/setup-uv@v6
         with:
           python-version: "3.12"
-      - run: uv sync --frozen
-      - run: uv run python -m unittest discover -s tests -v
-      - run: uv run python -m compileall -q main.py provider taodock_plugin tools
+
+      - name: Install locked dependencies
+        run: uv sync --frozen
+
+      - name: Run unit tests
+        run: uv run python -m unittest discover -s tests -v
+
+      - name: Compile Python sources
+        run: uv run python -m compileall -q main.py provider taodock_plugin tools
+
+      - name: Validate Marketplace metadata and disclosures
+        run: |
+          uv run python - <<'PY'
+          from pathlib import Path
+          import re
+          import yaml
+
+          manifest = yaml.safe_load(Path("manifest.yaml").read_text(encoding="utf-8"))
+          required = {"version", "type", "author", "name", "label", "description", "icon", "network", "plugins", "meta", "privacy", "repo", "contact"}
+          missing = required - manifest.keys()
+          assert not missing, f"manifest.yaml missing: {sorted(missing)}"
+          assert manifest["type"] == "plugin"
+          assert manifest["author"] == "taodock-api"
+          assert manifest["repo"] == "https://github.com/taodock-api/taodock-dify-tools"
+          assert manifest["privacy"] == "PRIVACY.md"
+          assert manifest["network"]["domains"] == ["taodock.com"]
+          assert Path("_assets") / manifest["icon"]
+          assert (Path("_assets") / manifest["icon"]).is_file()
+          assert Path("README.md").is_file()
+          assert Path("PRIVACY.md").read_text(encoding="utf-8").strip()
+          assert not re.search(r"[\u3400-\u9fff]", Path("README.md").read_text(encoding="utf-8")), "README.md must be English-only for Marketplace review"
+          print("Marketplace metadata and disclosures are valid")
+          PY
+
+      - name: Check package contents and size
+        run: |
+          uv run python - <<'PY'
+          from pathlib import Path
+          import zipfile
+
+          excluded_parts = {".git", ".github", ".venv", "tests", "__pycache__", ".pytest_cache", ".ruff_cache", "dist"}
+          excluded_suffixes = {".pyc", ".pyo", ".difypkg"}
+          output = Path("/tmp/taodock-dify-tools-package.zip")
+          files = []
+          for path in Path(".").rglob("*"):
+              if not path.is_file():
+                  continue
+              if any(part in excluded_parts for part in path.parts) or path.suffix in excluded_suffixes:
+                  continue
+              files.append(path)
+
+          with zipfile.ZipFile(output, "w", zipfile.ZIP_DEFLATED) as archive:
+              for path in files:
+                  archive.write(path, path)
+
+          size = output.stat().st_size
+          assert size < 15 * 1024 * 1024, f"package is too large: {size} bytes"
+          forbidden = {".env", ".DS_Store", "id_rsa", "credentials.json"}
+          packaged_names = {path.name for path in files}
+          assert not forbidden & packaged_names, f"forbidden files: {forbidden & packaged_names}"
+          print(f"Package preflight: {len(files)} files, {size / 1024:.1f} KiB")
+          PY
